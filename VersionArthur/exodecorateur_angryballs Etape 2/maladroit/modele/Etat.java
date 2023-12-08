@@ -1,35 +1,34 @@
 package modele;
 
-import java.awt.event.MouseEvent;
 import java.util.Vector;
 
-public abstract class Etat
-{
-	protected ControllerEtat controller;
-	
-	public void setControllerEtat(ControllerEtat e)
-	{
-		this.controller = e;
-	}
-	
-	public void changerControllerEtat()
-	{
-		controller.changerEtat();
-	}
-	
-	public abstract void request();
-	
-	public abstract void mouseDragged(MouseEvent arg0);
-	public abstract void mouseMoved(MouseEvent arg0);
-    public abstract void mousePressed(MouseEvent arg0);
-    public abstract void mouseReleased(MouseEvent arg0);
+import vues.Billard;
 
-	protected abstract void deplacer(double deltaT);
+public abstract class Etat {
+    private Billard billard;
+    private Bille bille;
 
-	protected abstract void gestionAcceleration(Vector<Bille> billes);
+    public Etat(Billard billard, Bille bille) {
+	this.billard = billard;
+	this.bille = bille;
+    }
 
-	protected abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
+    public Billard getBillard() {
+	return billard;
+    }
 
-	protected abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche,
-			double largeur, double hauteur);
+    public Bille getBille() {
+	return bille;
+    }
+
+    public abstract void request();
+
+    protected abstract void deplacer(double deltaT);
+
+    protected abstract void gestionAcceleration(Vector<Bille> billes);
+
+    protected abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
+
+    protected abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche,
+	    double largeur, double hauteur);
 }

@@ -6,8 +6,8 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="/Users/home/Downloads/Projet_Angry_Balls_23_24 2/mesmaths_sources_avec_awt.jar"/>
-	<classpathentry kind="lib" path="/Users/home/Downloads/Projet_Angry_Balls_23_24 2/malibsonique.jar"/>
-	<classpathentry kind="lib" path="/Users/home/Downloads/Projet_Angry_Balls_23_24 2/malibrairiegui.jar"/>
+	<classpathentry kind="lib" path="C:/Users/zelena/Desktop/ProjetDPM1/Librairies/malibrairiegui.jar"/>
+	<classpathentry kind="lib" path="C:/Users/zelena/Desktop/ProjetDPM1/Librairies/malibsonique.jar"/>
+	<classpathentry kind="lib" path="C:/Users/zelena/Desktop/ProjetDPM1/Librairies/mesmaths_sources_avec_awt.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
