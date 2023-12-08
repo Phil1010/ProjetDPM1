@@ -1,10 +1,12 @@
 package modele;
 
 import java.awt.Graphics;
+import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Vector;
 
+import mesmaths.geometrie.base.Vecteur;
 import vues.Billard;
 
 /**
@@ -67,7 +69,14 @@ public class ComportementBillePilotee extends DecorateurBille implements MouseLi
 
     @Override
     public void mousePressed(MouseEvent e) {
-	this.etat = new Clique(this.billard, this.bille);
+	Point click = this.billard.getMousePosition();
+	Vecteur positionBille = this.bille.getPosition();
+
+	if (click.distance(positionBille.x, positionBille.y) <= this.bille.getRayon()) {
+	    this.etat = new Clique(this.billard, this.bille);
+
+	}
+
     }
 
     @Override

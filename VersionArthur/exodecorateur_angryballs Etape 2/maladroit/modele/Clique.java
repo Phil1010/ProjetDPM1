@@ -24,10 +24,11 @@ public class Clique extends Etat {
 	Point point = this.getBillard().getMousePosition();
 	Vecteur souris = new Vecteur(point.getX(), point.getY());
 	Vecteur vitesse = souris.difference(this.getBille().position);
-	vitesse.multiplie(1.0 / 10.0);
+	vitesse.multiplie((this.getBille().masse() / (48 * this.getBille().masse())));
 	this.getBille().vitesse.set(vitesse);
 	this.getBille().position.set(souris);
-	System.out.println(this.getBille().toString());
+	this.getBille().acceleration.set(new Vecteur(0, 0));
+	System.out.println(this.getBille().vitesse);
     }
 
     @Override
