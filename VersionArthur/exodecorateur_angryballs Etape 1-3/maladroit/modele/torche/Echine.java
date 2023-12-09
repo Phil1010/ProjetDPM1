@@ -6,6 +6,7 @@ import java.util.Arrays;
 
 //import modele.Dessinateur;
 import modele.Bille;
+import modele.BilleConcrete;
 import mesmaths.geometrie.base.Vecteur;
 
 /**
@@ -142,7 +143,7 @@ Vecteur p1,p2;
 for ( i = 1, p1 = this.sommets[0]; i <this.sommets.length; ++i, p1 = p2)
     {
     p2 = this.sommets[i];
-    Bille.dessineSegment(g, p1, p2, COULEUR_ECHINE);
+    BilleConcrete.dessineSegment(g, p1, p2, COULEUR_ECHINE);
     }
 }
 

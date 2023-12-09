@@ -20,7 +20,7 @@ public class ComportementBilleRectUniforme extends DecorateurBille
 	@Override
 	public void deplacer(double deltaT) {
 		bille.deplacer(deltaT);
-		mouvementUniformementAccelere( this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);
+		BilleConcrete.mouvementUniformementAccelere( this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);
 	}
 
 	@Override

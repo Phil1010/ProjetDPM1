@@ -12,15 +12,6 @@ public abstract class DecorateurBille extends Bille
 	public DecorateurBille(Bille bille)
 	{
 		this.bille = bille;
-		if(bille != null)
-		{
-			this.position = bille.getPosition();
-			this.rayon = bille.getRayon();
-			this.vitesse = bille.getVitesse();
-			this.acceleration = bille.getAcceleration();
-			this.couleur = bille.couleur;
-			this.clef = bille.clef;
-		}
 	}
 	
 	public Bille getBille()
@@ -40,5 +31,24 @@ public abstract class DecorateurBille extends Bille
 	@Override
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 			double hauteur);
+	
+	/** GETTERS */
+	
+	@Override
+	public Vecteur getPosition() { return bille.getPosition(); }
+	
+	@Override
+	public double getRayon() { return bille.getRayon(); }
 
+	@Override
+	public Vecteur getVitesse() { return bille.getVitesse(); }
+
+	@Override
+	public Vecteur getAcceleration() { return bille.getAcceleration(); }
+
+	@Override
+	public int getClef() { return bille.getClef(); }
+
+	@Override
+	public double masse() { return bille.masse(); }
 }

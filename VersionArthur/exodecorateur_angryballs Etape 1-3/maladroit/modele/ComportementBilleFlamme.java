@@ -195,12 +195,12 @@ public class ComportementBilleFlamme extends DecorateurBille
 	        {
 		        int couleur = this.couleursEtincelles[i];
 		        Color co = new Color(couleur);
-		        Bille.dessineDisque(g, this.etincelles[i], this.rayonEtincelle, co, co);
+		        BilleConcrete.dessineDisque(g, this.etincelles[i], this.rayonEtincelle, co, co);
 	        } 
 	    }
 		else            /* échec du remplissage des tableaux de positions et de couleurs alors on dessine l'échine sans la flamme */
 	    {
-		    Bille.dessineSegment(g, this.getPosition(), this.echine.sommets[0], Echine.COULEUR_ECHINE);
+			BilleConcrete.dessineSegment(g, this.getPosition(), this.echine.sommets[0], Echine.COULEUR_ECHINE);
 		    this.echine.dessine(g); 
 	    }
 	}
