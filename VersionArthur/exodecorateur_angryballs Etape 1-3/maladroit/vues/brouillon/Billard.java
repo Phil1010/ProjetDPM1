@@ -5,6 +5,7 @@ import java.awt.Graphics;
 import java.util.Vector;
 
 import modele.Bille;
+import visiteurDessin.VisiteurDessinAWT;
 
 
 /**
@@ -30,7 +31,7 @@ Vector<Bille> billes;
     int i;
     
     for ( i = 0; i < this.billes.size(); ++i)
-        this.billes.get(i).dessine(graphics);
+        this.billes.get(i).visiteurDessine(new VisiteurDessinAWT(graphics));
     
     //System.out.println("billes dans le billard = " + billes);
     }

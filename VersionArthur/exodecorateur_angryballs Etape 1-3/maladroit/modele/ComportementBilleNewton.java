@@ -39,9 +39,4 @@ public class ComportementBilleNewton extends DecorateurBille
 		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
 		
 	}
-
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 }

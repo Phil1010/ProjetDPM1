@@ -43,9 +43,4 @@ public class ComportementBilleRectUniforme extends DecorateurBille
 			double hauteur) {
 		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);		
 	}
-
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 }

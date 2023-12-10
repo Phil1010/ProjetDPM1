@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
+import visiteurDessin.VisiteurDessin;
 
 /**
  * Sert pour appliquer le Design Pattern Decorateur
@@ -52,6 +53,12 @@ public abstract class Bille
 	 */
 	public abstract double masse();
 	
+	/**
+	 * 
+	 * @return La couleur de la bille
+	 */
+	public abstract int getColor();
+	
 	/********************/
 	/** AUTRES METHODES */
 	/********************/
@@ -97,6 +104,6 @@ public abstract class Bille
 	 * La nature du comportement de la bille en r�ponse � cette collision est d�finie dans les classes d�riv�es
 	 * */
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur, double hauteur);
-
-	public abstract void dessine (Graphics g);    // r�f�rence awt : mauvais
+	
+	public abstract void visiteurDessine(VisiteurDessin v);
 }

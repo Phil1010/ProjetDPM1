@@ -7,6 +7,7 @@ import mesmaths.cinematique.Cinematique;
 import mesmaths.cinematique.Collisions;
 import mesmaths.geometrie.base.Geop;
 import mesmaths.geometrie.base.Vecteur;
+import visiteurDessin.VisiteurDessin;
 
 
 /**
@@ -34,7 +35,7 @@ public class BilleConcrete extends Bille
 	public  Vecteur acceleration;
 	public int clef;                // identifiant unique de cette bille
 
-	public Color couleur;          // reference awt : mauvais
+	public int couleur;          // Une couleur est un entier
 
 	/** GETTERS */
 	
@@ -55,6 +56,9 @@ public class BilleConcrete extends Bille
 
 	@Override
 	public double masse() { return ro*Geop.volumeSphère(rayon); }
+	
+	@Override
+	public int getColor() { return couleur; }
 	
 	/********************/
 	/** AUTRES METHODES */
@@ -83,7 +87,7 @@ public class BilleConcrete extends Bille
 	 * @param couleur
 	 */
 	protected BilleConcrete(Vecteur centre, double rayon, Vecteur vitesse,
-	        Vecteur acceleration, Color couleur)
+	        Vecteur acceleration, int couleur)
 	{
 		this.position = centre;
 		this.rayon = rayon;
@@ -100,7 +104,7 @@ public class BilleConcrete extends Bille
 	 * @param vitesse
 	 * @param couleur
 	 */
-	public BilleConcrete(Vecteur position, double rayon, Vecteur vitesse, Color couleur)
+	public BilleConcrete(Vecteur position, double rayon, Vecteur vitesse, int couleur)
 	{
 		this(position,rayon,vitesse,new Vecteur(),couleur);
 	}
@@ -131,53 +135,16 @@ public class BilleConcrete extends Bille
 	{
 		// Par defaut, aucunes colisions avec les murs
 	}
-
+	
 	@Override
-	public void dessine(Graphics g) {
-		dessineDisque(g,this.getPosition(),this.getRayon(),this.couleur,Color.CYAN);
-	}	
-	
-	/** � d�placer dans une classe mieux appropri�e */
-	public static void dessineDisque(Graphics g, final Vecteur position, final double rayon, final Color couleurInterieur, final Color couleurBord)
+	public void visiteurDessine(VisiteurDessin v)
 	{
-		int width, height;
-		int xMin, yMin;
-	
-		xMin = (int)Math.round(position.x-rayon);
-		yMin = (int)Math.round(position.y-rayon);
-	
-		width = height = 2*(int)Math.round(rayon); 
-	
-		g.setColor(couleurInterieur);
-		g.fillOval( xMin, yMin, width, height);
-		g.setColor(couleurBord);
-		g.drawOval(xMin, yMin, width, height);
+		v.visiteurDessine(this);
 	}
-
-	/* cette m�thode engendre des clignotements : id�e : utiliser l'active rendering et le double buffering pour �viter �a */
-
 
 	public String toString() 
     {
 		return "centre = " + position + " rayon = "+rayon +  " vitesse = " + vitesse + " acceleration = " + acceleration + " couleur = " + couleur + "clef = " + clef;
     }
-
-	/**
-	 * dessine le segment [p1 p2] avec la couleur indiqu�e
-	 * 
-	 *  � d�placer dans une classe mieux appropri�e */
-	public static void dessineSegment( Graphics g, Vecteur p1, Vecteur p2, Color couleur)
-	{
-		int x1 = (int)Math.round(p1.x);
-		int y1 = (int)Math.round(p1.y);
-	
-		int x2 = (int)Math.round(p2.x);
-		int y2 = (int)Math.round(p2.y);
-	
-		Color ancienneCouleur = g.getColor();
-		g.setColor(couleur);
-		g.drawLine(x1, y1, x2, y2);
-		g.setColor(ancienneCouleur);
-	}
 }
 

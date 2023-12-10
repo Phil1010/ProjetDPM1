@@ -35,9 +35,4 @@ public class ComportementBilleArret extends DecorateurBille
 		Collisions.collisionBilleContourAvecArretHorizontal(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, largeur);
 		Collisions.collisionBilleContourAvecArretVertical(this.getPosition(), this.getRayon(), this.getVitesse(), ordonneeCoinHautGauche, hauteur);
 	}
-
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 }

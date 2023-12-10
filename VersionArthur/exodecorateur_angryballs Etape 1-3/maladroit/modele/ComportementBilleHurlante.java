@@ -86,9 +86,4 @@ public class ComportementBilleHurlante extends DecorateurBille implements ItemLi
 		    this.sonLong = boutonChoixHurlement.sonLong;                                //System.err.println("dans BilleHurlanteMvtNewtonArret.itemStateChanged");
 	    }
 	}
-
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 }

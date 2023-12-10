@@ -35,9 +35,4 @@ public class ComportementBilleRebondir extends DecorateurBille
 		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
 		Collisions.collisionBilleContourAvecRebond(this.getPosition(), this.getRayon(), this.getVitesse(), abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
 	}
-	
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 }

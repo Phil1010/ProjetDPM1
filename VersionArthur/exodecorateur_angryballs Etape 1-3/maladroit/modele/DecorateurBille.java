@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
+import visiteurDessin.VisiteurDessin;
 
 public abstract class DecorateurBille extends Bille
 {
@@ -32,6 +33,9 @@ public abstract class DecorateurBille extends Bille
 	public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 			double hauteur);
 	
+	@Override
+	public void visiteurDessine(VisiteurDessin v) { bille.visiteurDessine(v); }
+	
 	/** GETTERS */
 	
 	@Override
@@ -51,4 +55,7 @@ public abstract class DecorateurBille extends Bille
 
 	@Override
 	public double masse() { return bille.masse(); }
+	
+	@Override
+	public int getColor() { return bille.getColor(); }
 }
