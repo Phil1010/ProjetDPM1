@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="maladroit"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="C:/Users/zelena/Desktop/ProjetDPM1/Librairies/malibrairiegui.jar"/>
+	<classpathentry kind="lib" path="C:/Users/zelena/Desktop/ProjetDPM1/Librairies/malibsonique.jar"/>
+	<classpathentry kind="lib" path="C:/Users/zelena/Desktop/ProjetDPM1/Librairies/mesmaths_sources_avec_awt.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

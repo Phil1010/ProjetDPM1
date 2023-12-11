@@ -161,11 +161,12 @@ public class TestAngryBalls {
 // Bille azur MRU torche avec arret contre le mur et freignage
 	int couleurBleuAzur = 0x003399;
 	Bille azur = new BilleConcrete(p0, rayonBleuAzur, v0, new Color(couleurBleuAzur));
-	azur = new ComportementBilleFlamme(azur);
+
 	azur = new ComportementBilleRebondir(azur);
 	azur = new ComportementBilleRectUniforme(azur);
 	azur = new ComportementBilleFreinage(azur);
 	azur = new ComportementBillePilotee(azur, billard, rayonRouge);
+	azur = new ComportementBilleFlamme(azur, billard);
 
 	billes.add((Bille) azur);
 

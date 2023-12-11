@@ -1,17 +1,19 @@
-package modele;
+package etat;
 
+import java.awt.Color;
 import java.awt.Point;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
+import modele.Bille;
 import vues.Billard;
 
 /**
  * Etat quand on clique sur une bille
  */
-public class Clique extends Etat {
+public class EtatPiloteeCliquee extends EtatPilotee {
 
-    public Clique(Billard billard, Bille bille) {
+    public EtatPiloteeCliquee(Billard billard, Bille bille) {
 	super(billard, bille);
     }
 
@@ -20,7 +22,7 @@ public class Clique extends Etat {
     }
 
     @Override
-    protected void deplacer(double deltaT) {
+    public void deplacer(double deltaT) {
 	Point point = this.getBillard().getMousePosition();
 	Vecteur souris = new Vecteur(point.getX(), point.getY());
 	Vecteur vitesse = souris.difference(this.getBille().position);
@@ -28,22 +30,22 @@ public class Clique extends Etat {
 	this.getBille().vitesse.set(vitesse);
 	this.getBille().position.set(souris);
 	this.getBille().acceleration.set(new Vecteur(0, 0));
-	System.out.println(this.getBille().vitesse);
     }
 
     @Override
-    protected void gestionAcceleration(Vector<Bille> billes) {
+    public void gestionAcceleration(Vector<Bille> billes) {
 	// TODO Auto-generated method stub
     }
 
     @Override
-    protected boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
 	// TODO Auto-generated method stub
+	this.getBille().couleur = Color.RED;
 	return this.getBille().gestionCollisionBilleBille(billes);
     }
 
     @Override
-    protected void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
+    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 	    double hauteur) {
 	this.getBille().collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
     }

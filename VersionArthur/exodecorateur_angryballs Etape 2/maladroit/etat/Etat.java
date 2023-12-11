@@ -1,7 +1,8 @@
-package modele;
+package etat;
 
 import java.util.Vector;
 
+import modele.Bille;
 import vues.Billard;
 
 public abstract class Etat {
@@ -23,12 +24,12 @@ public abstract class Etat {
 
     public abstract void request();
 
-    protected abstract void deplacer(double deltaT);
+    public abstract void deplacer(double deltaT);
 
-    protected abstract void gestionAcceleration(Vector<Bille> billes);
+    public abstract void gestionAcceleration(Vector<Bille> billes);
 
-    protected abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
+    public abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
 
-    protected abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche,
-	    double largeur, double hauteur);
+    public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
+	    double hauteur);
 }

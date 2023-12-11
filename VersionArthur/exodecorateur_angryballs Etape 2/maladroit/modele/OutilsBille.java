@@ -97,13 +97,17 @@ public class OutilsBille {
 
 	int i;
 
-	for (i = 0; i < autresBilles.size(); ++i) {
+	for (i = 0; i < autresBilles.size(); i++) {
+
 	    billeCourante = autresBilles.get(i);
 	    if (Collisions.CollisionBilleBille(cetteBille.getPosition(), cetteBille.getRayon(), cetteBille.getVitesse(),
 		    cetteBille.masse(), billeCourante.getPosition(), billeCourante.getRayon(),
-		    billeCourante.getVitesse(), billeCourante.masse()))
-		System.out.println("C'EST VRAI");
-	    return billeCourante;
+		    billeCourante.getVitesse(), billeCourante.masse())) {
+//		System.out.println("C'EST VRAI");
+		return billeCourante;
+
+	    }
+
 	}
 	return null;
     }
