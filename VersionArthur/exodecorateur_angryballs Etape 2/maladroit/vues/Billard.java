@@ -25,7 +25,7 @@ import exodecorateur_angryballs.mieux.modele.awt.DessinateurBilleAWT;*/
  * */
 public class Billard extends Canvas implements VueBillard
 {
-    Vector<Bille> billes;
+    public Vector<Bille> billes;
     public Billard(Vector<Bille> billes)
     {
         this.billes = billes;

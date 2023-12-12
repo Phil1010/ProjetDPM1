@@ -1,13 +1,15 @@
 package modele;
 
 import java.awt.*;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
 import musique.SonLong;
 import vues.VueBillard;
 
-public class ComportementBilleCollision extends DecorateurBille
+public class ComportementBilleCollision extends DecorateurBille implements Observer
 {
     public static final int DELAI_MIN = 10;    /* délai minimum de rafraichissement du son. en millisecondes */
     public static final int DELAI_MAX = 150;    /* délai maximum de rafraichissement du son. en millisecondes */
@@ -49,7 +51,6 @@ public class ComportementBilleCollision extends DecorateurBille
         // On va jouer le bruit
         if(tmp)
         {
-            System.out.println("COLLISION");
             Vecteur p = this.getPosition();
             Vecteur v = this.getVitesse();
             double xMax;
@@ -83,6 +84,13 @@ public class ComportementBilleCollision extends DecorateurBille
         bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
 
     }
+
+	@Override
+	public void update(Observable arg0, Object arg1) {
+		Bille bille = (Bille) arg1;
+		
+		
+	}
 
 
 }
