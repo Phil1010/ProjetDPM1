@@ -1,5 +1,6 @@
 package modele;
 
+import java.util.List;
 import java.util.Observable;
 import java.util.Observer;
 import java.util.Vector;
@@ -37,39 +38,38 @@ public class ComportementBilleFlamme extends DecorateurBille implements Observer
 	}
 
 	@Override
-	public void gestionAcceleration(Vector<Bille> billes) {
-		bille.gestionAcceleration(billes);
-	}
-
-	@Override
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return bille.gestionCollisionBilleBille(billes);
-	}
-
-	public Bille gestionCollisionBilleBille2(Vector<Bille> billes) {
-		return null;// bille.gestionCollisionBilleBille2(billes);
-	}
-
-	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-								 double hauteur) {
-		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-	}
-
-	@Override
 	public void visiteurDessine(VisiteurDessin v) {
 		bille.visiteurDessine(v);
 		t.visiteurDessine(v);
 	}
 
 	@Override
-	public void update(Observable arg0, Object obj) {
-		Bille bille = (Bille) obj;
-		Vector<Bille> billes = this.billard.billes;
-		for (int i = 0; i < billes.size(); i++) {
-			if (billes.get(i).getClef() == bille.getClef() && !(bille instanceof ComportementBilleFlamme)) {
-				billes.set(i, new ComportementBilleFlamme(billes.get(i), true, this.billard));
+	public void update(Observable arg0, Object arg1) {
+		List<Bille> l = (List<Bille>) arg1;
+
+		Vector<Bille> billes = billard.billes;
+
+		// 1 = la bille sans flamme
+		// 0 = bille avec flamme
+
+		if (l.get(0).getClef() == this.getClef() && !(l.get(1) instanceof ComportementBilleFlamme)) {
+			for (int i = 0; i < billard.billes.size(); i++) {
+				if (l.get(1).getClef() == billard.billes.get(i).getClef()) {
+					billard.billes.set(i, new ComportementBilleFlamme(l.get(1), true, billard));
+				}
 			}
 		}
+
+		// else if (l.get(1).getClef() == this.getClef()) {
+		// if (!(l.get(0) instanceof ComportementBilleFlamme)){
+		// for (int i = 0; i < billard.billes.size(); i++) {
+		// if (l.get(0).getClef() == billard.billes.get(i).getClef()) {
+		// billard.billes.set(i, new ComportementBilleFlamme(l.get(0), true, billard));
+//
+//					}
+//
+//				}
+//			}
+//		}
 	}
 }

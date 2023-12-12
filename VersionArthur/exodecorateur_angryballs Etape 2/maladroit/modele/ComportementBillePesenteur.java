@@ -28,16 +28,4 @@ public class ComportementBillePesenteur extends DecorateurBille
 		this.getAcceleration().ajoute(this.pesanteur);          // contribution du champ de pesanteur (par exemple)		
 	}
 
-	@Override
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return bille.gestionCollisionBilleBille(billes);
-	}
-
-	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-			double hauteur) {
-		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-	}
-
-
 }

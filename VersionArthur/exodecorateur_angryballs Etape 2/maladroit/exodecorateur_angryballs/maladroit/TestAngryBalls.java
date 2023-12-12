@@ -112,6 +112,7 @@ public class TestAngryBalls {
 		red = new ComportementBilleRectUniforme(red);
 		red = new ComportementBillePilotee(red, billard, rayonRouge);
 		red = new ComportementBilleCollision(red, collision[0], cadre);
+		red = new ComportementBilleDisco(red, billard);
 		billes.add(red);
 
 // Bille jaune Newton avec pesanteur, frottements et rebond
@@ -133,7 +134,7 @@ public class TestAngryBalls {
 		green = new ComportementBillePilotee(green, billard, rayonRouge);
 		green = new ComportementBilleCollision(green, collision[0], cadre);
 
-		billes.add((Bille) green);
+		// billes.add((Bille) green);
 
 // Bille cyan MRU qui traverse les murs
 		Bille cyan = new BilleConcrete(p4, rayonCyan, v4, Color.cyan.getRGB());
@@ -142,20 +143,20 @@ public class TestAngryBalls {
 		cyan = new ComportementBillePilotee(cyan, billard, rayonRouge);
 		cyan = new ComportementBilleCollision(cyan, collision[0], cadre);
 
-		billes.add((Bille) cyan);
+		// billes.add((Bille) cyan);
 ////
 // Bille noir hurlante Newton
 		Bille noire = new BilleConcrete(p5, rayonNoire, v5, Color.black.getRGB());
-		// noire = new ComportementBilleHurlante(noire,
-		// hurlements[choixHurlementInitial], cadre);
-		// ComportementBilleHurlante ref = (ComportementBilleHurlante) noire;
+		noire = new ComportementBilleHurlante(noire,
+		hurlements[choixHurlementInitial], cadre);
+		ComportementBilleHurlante ref = (ComportementBilleHurlante) noire;
 		noire = new ComportementBilleNewton(noire);
 		noire = new ComportementBilleArret(noire);
 		noire = new ComportementBillePilotee(noire, billard, rayonRouge);
 		noire = new ComportementBilleCollision(noire, collision[0], cadre);
 
-		billes.add((Bille) noire);
-		// cadre.addChoixHurlementListener(ref);
+		// billes.add((Bille) noire);
+		cadre.addChoixHurlementListener(ref);
 //
 // Bille azur MRU torche avec arret contre le mur et freignage
 		int couleurBleuAzur = 0x003399;

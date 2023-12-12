@@ -1,9 +1,9 @@
 package modele;
 
+import java.util.ArrayList;
 import java.util.Observable;
 
 public class ObserveurBilles extends Observable {
-	
 	public ObserveurBilles() {
 		
 	}
@@ -13,5 +13,6 @@ public class ObserveurBilles extends Observable {
 		// TODO Auto-generated method stub
 		super.setChanged();
 	}
+	
 
 }

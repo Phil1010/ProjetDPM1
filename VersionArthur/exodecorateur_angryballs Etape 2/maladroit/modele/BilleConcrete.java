@@ -35,7 +35,6 @@ public class BilleConcrete extends Bille
     public  Vecteur acceleration;
     public int clef;                // identifiant unique de cette bille
 
-    public int couleur;          // Une couleur est un entier
 
     /** GETTERS */
 
@@ -59,6 +58,13 @@ public class BilleConcrete extends Bille
 
     @Override
     public int getColor() { return couleur; }
+    
+    @Override
+    public Bille getBille() {
+    	// TODO Auto-generated method stub
+    	return this;
+    }
+      
 
     /********************/
     /** AUTRES METHODES */
@@ -128,12 +134,6 @@ public class BilleConcrete extends Bille
     {
         // Par defaut, la bille reste immobile
         return OutilsBille.gestionCollisionBilleBille((Bille)this, billes);
-    }
-
-    @Override
-    public Bille gestionCollisionBilleBille2(Vector<Bille> billes)
-    {
-        return OutilsBille.gestionCollisionBilleBille2((Bille)this, billes);
     }
 
     @Override

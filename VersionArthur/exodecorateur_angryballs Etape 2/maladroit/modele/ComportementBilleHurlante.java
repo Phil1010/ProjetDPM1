@@ -59,22 +59,6 @@ public class ComportementBilleHurlante extends DecorateurBille implements ItemLi
 		    this.dernierInstant= instant;
 	    }
 	}
-
-	@Override
-	public void gestionAcceleration(Vector<Bille> billes) {
-		bille.gestionAcceleration(billes);
-	}
-
-	@Override
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return bille.gestionCollisionBilleBille(billes);
-	}
-
-	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-			double hauteur) {
-		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-	}
 	
 	@Override
 	public void itemStateChanged(ItemEvent e)

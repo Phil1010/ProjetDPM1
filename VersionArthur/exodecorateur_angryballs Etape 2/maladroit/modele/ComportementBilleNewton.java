@@ -27,18 +27,4 @@ public class ComportementBilleNewton extends DecorateurBille
 		this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse()));      // contribution de l'acc�l�ration due au frottement dans l'air
 	}
 
-	@Override
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return bille.gestionCollisionBilleBille(billes);
-//		return OutilsBille.gestionCollisionBilleBille((Bille)bille, billes);
-	}
-
-	@Override
-	public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-			double hauteur) {
-		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-		
-	}
-
-
 }

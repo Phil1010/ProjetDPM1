@@ -31,19 +31,5 @@ public class ComportementBilleRectUniforme extends DecorateurBille
 		this.getAcceleration().set(Vecteur.VECTEURNUL);
 	}
 
-	@Override
-	// On veut une gestion des billes
-	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		return bille.gestionCollisionBilleBille(billes);
-//		return OutilsBille.gestionCollisionBilleBille((Bille)bille, billes);
-	}
-
-	@Override
-	// Collision avec les murs
-	public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-			double hauteur) {
-		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);		
-	}
-
 
 }

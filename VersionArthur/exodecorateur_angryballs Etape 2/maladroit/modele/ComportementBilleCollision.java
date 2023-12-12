@@ -32,18 +32,6 @@ public class ComportementBilleCollision extends DecorateurBille implements Obser
     }
 
     @Override
-    public void deplacer(double deltaT) {
-        bille.deplacer(deltaT);
-
-    }
-
-    @Override
-    public void gestionAcceleration(Vector<Bille> billes) {
-        bille.gestionAcceleration(billes);
-
-    }
-
-    @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
         // TODO Auto-generated method stub
         boolean tmp = bille.gestionCollisionBilleBille(billes);
@@ -76,13 +64,6 @@ public class ComportementBilleCollision extends DecorateurBille implements Obser
         }
 
         return tmp;
-    }
-
-    @Override
-    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-                                 double hauteur) {
-        bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-
     }
 
 	@Override

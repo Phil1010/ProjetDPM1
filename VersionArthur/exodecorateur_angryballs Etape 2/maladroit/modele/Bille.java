@@ -1,5 +1,6 @@
 package modele;
 
+import java.awt.Color;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
@@ -9,6 +10,7 @@ import visiteurDessin.VisiteurDessin;
  * Sert pour appliquer le Design Pattern Decorateur
  */
 public abstract class Bille {
+	protected int couleur;
     /**********************/
     /* CONSTANTES STATICS */
     /**********************/
@@ -54,6 +56,11 @@ public abstract class Bille {
      * @return La couleur de la bille
      */
     public abstract int getColor();
+    
+    
+    public void setCouleur(int couleur) {
+		this.couleur = couleur;
+	}
 
     /********************/
     /** AUTRES METHODES */
@@ -97,14 +104,6 @@ public abstract class Bille {
     public abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
 
     /**
-     * Pareil que gestionCollisionBilleBille mais retourne une bille
-     *
-     * @param billes
-     * @return
-     */
-    public abstract Bille gestionCollisionBilleBille2(Vector<Bille> billes);
-
-    /**
      * gestion de l'�ventuelle collision de la bille (this) avec le contour
      * rectangulaire de l'�cran d�fini par (abscisseCoinHautGauche,
      * ordonn�eCoinHautGauche, largeur, hauteur)
@@ -118,4 +117,6 @@ public abstract class Bille {
                                           double hauteur);
 
     public abstract void visiteurDessine(VisiteurDessin v);
+    
+    public abstract Bille getBille();
 }

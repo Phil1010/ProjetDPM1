@@ -17,28 +17,30 @@ public abstract class DecorateurBille extends Bille
 
     public Bille getBille()
     {
-        return bille;
+        return bille.getBille();
     }
 
     @Override
-    public abstract void deplacer(double deltaT);
+    public void deplacer(double deltaT) {
+    	bille.deplacer(deltaT);
+    }
 
     @Override
-    public abstract void gestionAcceleration(Vector<Bille> billes);
+    public void gestionAcceleration(Vector<Bille> billes) {
+    	bille.gestionAcceleration(billes);
+    }
 
     @Override
-    public abstract boolean gestionCollisionBilleBille(Vector<Bille> billes);
-
-    @Override
-    public Bille gestionCollisionBilleBille2(Vector<Bille> billes)
-    {
-        return bille.gestionCollisionBilleBille2(billes);
+    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+    	return bille.gestionCollisionBilleBille(billes);
     }
 
 
     @Override
-    public abstract void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-                                          double hauteur);
+    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
+                                          double hauteur) {
+    	bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
+    }
 
     @Override
     public void visiteurDessine(VisiteurDessin v) { bille.visiteurDessine(v); }

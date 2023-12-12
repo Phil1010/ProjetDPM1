@@ -12,21 +12,7 @@ public class ComportementBilleTraverserMur extends DecorateurBille {
 	// TODO Auto-generated constructor stub
     }
 
-    @Override
-    public void deplacer(double deltaT) {
-	bille.deplacer(deltaT);
-
-    }
-
-    @Override
-    public void gestionAcceleration(Vector<Bille> billes) {
-	bille.gestionAcceleration(billes);
-    }
-
-    @Override
-    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-	return bille.gestionCollisionBilleBille(billes);
-    }
+   
 
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,

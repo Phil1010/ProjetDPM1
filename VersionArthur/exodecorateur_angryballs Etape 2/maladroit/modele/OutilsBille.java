@@ -1,5 +1,7 @@
 package modele;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Observable;
 import java.util.Vector;
 
@@ -90,47 +92,19 @@ public class OutilsBille {
 			if (Collisions.CollisionBilleBille(cetteBille.getPosition(), cetteBille.getRayon(), cetteBille.getVitesse(),
 					cetteBille.masse(), billeCourante.getPosition(), billeCourante.getRayon(),
 					billeCourante.getVitesse(), billeCourante.masse())) {
+					List<Bille> l = new ArrayList<Bille>();
+					l.add(cetteBille);
+					l.add(billeCourante);
 					OutilsBille.getInstance().setChanged();
-					OutilsBille.getInstance().notifyObservers(billeCourante);
+
+					OutilsBille.getInstance().notifyObservers(l);
 				 return true;
 			}
 		}
 		return false;
 	}
 
-	/**
-	 * Retourne une bille au lieu dde vrai ou faux
-	 * 
-	 * @param cetteBille
-	 * @param billes
-	 * @return
-	 */
-	public static Bille gestionCollisionBilleBille2(Bille cetteBille, Vector<Bille> billes) {
-//--- on r�cup�re d'abord dans autresBilles toutes les billes sauf cetteBille ----
-
-		Vector<Bille> autresBilles = OutilsBille.autresBilles(cetteBille, billes);
-
-//--- on cherche � pr�sent la 1�re des autres billes avec laquelle cetteBille est en collision ---------------------
-//-------------- on suppose qu'il ne peut y avoir de collision qui implique plus de deux billes � la fois ---------------
-
-		Bille billeCourante;
-
-		int i;
-
-		for (i = 0; i < autresBilles.size(); i++) {
-
-			billeCourante = autresBilles.get(i);
-			if (Collisions.CollisionBilleBille(cetteBille.getPosition(), cetteBille.getRayon(), cetteBille.getVitesse(),
-					cetteBille.masse(), billeCourante.getPosition(), billeCourante.getRayon(),
-					billeCourante.getVitesse(), billeCourante.masse())) {
-//		System.out.println("C'EST VRAI");
-				return billeCourante;
-
-			}
-
-		}
-		return null;
-	}
+	
 
 	/**
 	 * @param cetteBille : une bille particuli�re
