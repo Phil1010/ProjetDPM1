@@ -1,0 +1,11 @@
+configuration des fichiers audios pour les collisions . Un fichier audio au format wav par ligne.
+4 informations sur une ligne :
+nom du fichier (sans l'extention .wav) début de l'extrait (en centièmes de secondes) fin de l'extrait (en centièmes de secondes) effectif (nombre de morceaux composant l'extrait)
+séparateur : espace. exemple :  sabrelaser 0 150 15
+Important ===> On doit toujours avoir : effectif^2 >= (finExtrait - débutExtrait) / BilleHurlante.DELAI_MIN
+Important ===> On doit toujours avoir : (finExtrait - débutExtrait) / effectif >= SonJavax.TAILLE_BUFFER_LIGNE
+Les fichiers audio doivent être dans le même répertoire que ce fichier
+Les 8 premières lignes du fichier sont ignorées
+balle_pingpong 0 500 10
+choc_bille_bande 0 1700 30
+collision_bille_bille 0 150 15

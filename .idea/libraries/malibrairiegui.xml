@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="malibrairiegui">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/Librairies/malibrairiegui.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Librairies/malibsonique.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Librairies/mesmaths_sources_avec_awt.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/Librairies/malibrairiegui.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Librairies/malibsonique.jar!/" />
+      <root url="jar://$PROJECT_DIR$/Librairies/mesmaths_sources_avec_awt.jar!/" />
+    </SOURCES>
+  </library>
+</component>
