@@ -5,18 +5,8 @@ import java.io.File;
 import java.util.Vector;
 
 import mesmaths.geometrie.base.Vecteur;
-import modele.Bille;
-import modele.BilleConcrete;
-import modele.ComportementBilleArret;
-import modele.ComportementBilleFlamme;
-import modele.ComportementBilleFreinage;
-import modele.ComportementBilleHurlante;
-import modele.ComportementBilleNewton;
-import modele.ComportementBillePesenteur;
-import modele.ComportementBillePilotee;
-import modele.ComportementBilleRebondir;
-import modele.ComportementBilleRectUniforme;
-import modele.ComportementBilleTraverserMur;
+import modele.*;
+import modele.torche.Torche;
 import musique.SonLong;
 import vues.Billard;
 import vues.BillardAR;
@@ -39,15 +29,19 @@ public class TestAngryBalls {
 	File file = new File(""); // là où la JVM est lancée : racine du projet
 
 	File répertoireSon = new File(file.getAbsoluteFile(),
-		"" + File.separatorChar + "maladroit" + File.separatorChar + "bruits");
+		"VersionArthur\\exodecorateur_angryballs Etape 2" + File.separatorChar + "maladroit" + File.separatorChar + "bruits");
 	System.out.println(répertoireSon);
 
 //-------------------- chargement des sons pour les hurlements --------------------------------------
 
 	Vector<SonLong> sonsLongs = OutilsConfigurationBilleHurlante.chargeSons(répertoireSon,
 		"config_audio_bille_hurlante.txt");
+		Vector<SonLong> sonsCollision = OutilsConfigurationBilleHurlante.chargeSons(répertoireSon, "config_collision.txt");
 
-	SonLong hurlements[] = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
+
+		SonLong hurlements[] = SonLong.toTableau(sonsLongs); // on obtient un tableau de SonLong
+		SonLong collision[] = SonLong.toTableau(sonsCollision);
+
 
 //------------------- création de la liste (pour l'instant vide) des billes -----------------------
 
@@ -114,61 +108,68 @@ public class TestAngryBalls {
 	Vecteur v = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
 
 // Bille rouge MRU avec rebond
-	Bille red = new BilleConcrete(p1, rayonRouge, v1, Color.red);
+	Bille red = new BilleConcrete(p1, rayonRouge, v1, Color.red.getRGB());
 	red = new ComportementBilleRebondir(red);
 	red = new ComportementBilleRectUniforme(red);
 	red = new ComportementBillePilotee(red, billard, rayonRouge);
+	red = new ComportementBilleCollision(red, collision[0], cadre);
 	billes.add(red);
 
 // Bille jaune Newton avec pesanteur, frottements et rebond
-	Bille yellow = new BilleConcrete(p2, rayonJaune, v2, Color.yellow);
+	Bille yellow = new BilleConcrete(p2, rayonJaune, v2, Color.yellow.getRGB());
 	yellow = new ComportementBilleRebondir(yellow);
 	yellow = new ComportementBilleNewton(yellow);
 	yellow = new ComportementBillePesenteur(yellow, new Vecteur(0, 0.001));
 	yellow = new ComportementBilleFreinage(yellow);
 	yellow = new ComportementBillePilotee(yellow, billard, rayonRouge);
+	yellow = new ComportementBilleCollision(yellow, collision[0], cadre);
 
 	billes.add((Bille) yellow);
 
 // Bille verte Newton avec frottements et rebond
-	Bille green = new BilleConcrete(p3, rayonVert, v3, Color.green);
+	Bille green = new BilleConcrete(p3, rayonVert, v3, Color.green.getRGB());
 	green = new ComportementBilleRebondir(green);
 	green = new ComportementBilleNewton(green);
 	green = new ComportementBilleFreinage(green);
 	green = new ComportementBillePilotee(green, billard, rayonRouge);
+	green = new ComportementBilleCollision(green, collision[0], cadre);
 
 	billes.add((Bille) green);
 
 // Bille cyan MRU qui traverse les murs
-	Bille cyan = new BilleConcrete(p4, rayonCyan, v4, Color.cyan);
+	Bille cyan = new BilleConcrete(p4, rayonCyan, v4, Color.cyan.getRGB());
 	cyan = new ComportementBilleRectUniforme(cyan);
 	cyan = new ComportementBilleTraverserMur(cyan);
 	cyan = new ComportementBillePilotee(cyan, billard, rayonRouge);
+	cyan = new ComportementBilleCollision(cyan, collision[0], cadre);
 
 	billes.add((Bille) cyan);
 ////
 // Bille noir hurlante Newton
-	Bille noire = new BilleConcrete(p5, rayonNoire, v5, Color.black);
-	noire = new ComportementBilleHurlante(noire, hurlements[choixHurlementInitial], cadre);
-	ComportementBilleHurlante ref = (ComportementBilleHurlante) noire;
+	Bille noire = new BilleConcrete(p5, rayonNoire, v5, Color.black.getRGB());
+	//noire = new ComportementBilleHurlante(noire, hurlements[choixHurlementInitial], cadre);
+	//ComportementBilleHurlante ref = (ComportementBilleHurlante) noire;
 	noire = new ComportementBilleNewton(noire);
 	noire = new ComportementBilleArret(noire);
 	noire = new ComportementBillePilotee(noire, billard, rayonRouge);
+	noire = new ComportementBilleCollision(noire, collision[0], cadre);
 
 	billes.add((Bille) noire);
-	cadre.addChoixHurlementListener(ref);
+	//cadre.addChoixHurlementListener(ref);
 //
 // Bille azur MRU torche avec arret contre le mur et freignage
 	int couleurBleuAzur = 0x003399;
-	Bille azur = new BilleConcrete(p0, rayonBleuAzur, v0, new Color(couleurBleuAzur));
+	Bille azur = new BilleConcrete(p0, rayonBleuAzur, v0, couleurBleuAzur);
 
 	azur = new ComportementBilleRebondir(azur);
 	azur = new ComportementBilleRectUniforme(azur);
 	azur = new ComportementBilleFreinage(azur);
 	azur = new ComportementBillePilotee(azur, billard, rayonRouge);
-	azur = new ComportementBilleFlamme(azur, billard);
+	azur = new ComportementBilleCollision(azur, collision[0], cadre);
+	azur = new ComportementBilleFlamme(azur, new Torche(azur), true);
 
-	billes.add((Bille) azur);
+
+		billes.add((Bille) azur);
 
 // Bille rose MRU avec arret contre le mur
 //Bille rose = new BilleConcrete(p, rayon, v, Color.pink);

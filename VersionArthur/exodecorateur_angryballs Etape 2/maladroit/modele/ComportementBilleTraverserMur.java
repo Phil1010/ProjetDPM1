@@ -14,8 +14,6 @@ public class ComportementBilleTraverserMur extends DecorateurBille {
 
     @Override
     public void deplacer(double deltaT) {
-	System.out.println("BIIIILLE");
-
 	bille.deplacer(deltaT);
 
     }
@@ -39,8 +37,4 @@ public class ComportementBilleTraverserMur extends DecorateurBille {
 		ordonneeCoinHautGauche, largeur, hauteur);
     }
 
-    @Override
-    public void dessine(Graphics g) {
-	bille.dessine(g);
-    }
 }

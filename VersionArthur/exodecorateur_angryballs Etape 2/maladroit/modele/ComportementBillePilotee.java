@@ -61,11 +61,6 @@ public class ComportementBillePilotee extends DecorateurBille implements MouseLi
     }
 
     @Override
-    public void dessine(Graphics g) {
-	bille.dessine(g);
-    }
-
-    @Override
     public void mouseReleased(MouseEvent e) {
 	this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
     }

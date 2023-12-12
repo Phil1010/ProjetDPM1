@@ -36,9 +36,5 @@ public class ComportementBilleFreinage extends DecorateurBille
 		
 	}
 
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 
 }

@@ -20,7 +20,8 @@ public class ComportementBilleRectUniforme extends DecorateurBille
 	@Override
 	public void deplacer(double deltaT) {
 		bille.deplacer(deltaT);
-		mouvementUniformementAccelere( this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);
+
+		BilleConcrete.mouvementUniformementAccelere( this.getPosition(), this.getVitesse(), this.getAcceleration(), deltaT);
 	}
 
 	@Override
@@ -44,8 +45,5 @@ public class ComportementBilleRectUniforme extends DecorateurBille
 		bille.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);		
 	}
 
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
+
 }

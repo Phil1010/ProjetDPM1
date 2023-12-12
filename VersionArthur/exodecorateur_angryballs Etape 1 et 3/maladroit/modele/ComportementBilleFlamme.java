@@ -56,6 +56,6 @@ public class ComportementBilleFlamme extends DecorateurBille {
     @Override
     public void visiteurDessine(VisiteurDessin v) {
 	ct.visiteurDessine(v);
-	bille.visiteurDessine(t);
+	bille.visiteurDessine(v);
     }
 }

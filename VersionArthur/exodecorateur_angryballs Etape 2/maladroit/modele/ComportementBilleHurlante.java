@@ -87,8 +87,4 @@ public class ComportementBilleHurlante extends DecorateurBille implements ItemLi
 	    }
 	}
 
-	@Override
-	public void dessine(Graphics g) {
-		bille.dessine(g);
-	}
 }

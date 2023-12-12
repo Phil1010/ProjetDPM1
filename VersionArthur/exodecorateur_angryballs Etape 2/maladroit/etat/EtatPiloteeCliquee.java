@@ -25,11 +25,11 @@ public class EtatPiloteeCliquee extends EtatPilotee {
     public void deplacer(double deltaT) {
 	Point point = this.getBillard().getMousePosition();
 	Vecteur souris = new Vecteur(point.getX(), point.getY());
-	Vecteur vitesse = souris.difference(this.getBille().position);
+	Vecteur vitesse = souris.difference(this.getBille().getPosition());
 	vitesse.multiplie((this.getBille().masse() / (48 * this.getBille().masse())));
-	this.getBille().vitesse.set(vitesse);
-	this.getBille().position.set(souris);
-	this.getBille().acceleration.set(new Vecteur(0, 0));
+	this.getBille().getVitesse().set(vitesse);
+	this.getBille().getPosition().set(souris);
+	this.getBille().getAcceleration().set(new Vecteur(0, 0));
     }
 
     @Override
@@ -40,7 +40,6 @@ public class EtatPiloteeCliquee extends EtatPilotee {
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
 	// TODO Auto-generated method stub
-	this.getBille().couleur = Color.RED;
 	return this.getBille().gestionCollisionBilleBille(billes);
     }
 
