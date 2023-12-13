@@ -9,3 +9,4 @@ Les 8 premières lignes du fichier sont ignorées
 balle_pingpong 0 500 10
 choc_bille_bande 0 1700 30
 collision_bille_bille 0 150 15
+michael-jackson-hee-hee 0 100 2

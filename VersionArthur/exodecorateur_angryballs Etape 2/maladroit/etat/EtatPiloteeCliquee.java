@@ -13,39 +13,56 @@ import vues.Billard;
  */
 public class EtatPiloteeCliquee extends EtatPilotee {
 
-    public EtatPiloteeCliquee(Billard billard, Bille bille) {
-	super(billard, bille);
-    }
+	public EtatPiloteeCliquee(Billard billard, Bille bille) {
+		super(billard, bille);
+	}
 
-    public void request() {
-	System.out.println("Cliqué");
-    }
+	public void request() {
+		System.out.println("Cliqué");
+	}
 
-    @Override
-    public void deplacer(double deltaT) {
-	Point point = this.getBillard().getMousePosition();
-	Vecteur souris = new Vecteur(point.getX(), point.getY());
-	Vecteur vitesse = souris.difference(this.getBille().getPosition());
-	vitesse.multiplie((this.getBille().masse() / (48 * this.getBille().masse())));
-	this.getBille().getVitesse().set(vitesse);
-	this.getBille().getPosition().set(souris);
-	this.getBille().getAcceleration().set(new Vecteur(0, 0));
-    }
+	@Override
+	public void deplacer(double deltaT) {
+		Point point = this.getBillard().getMousePosition();
 
-    @Override
-    public void gestionAcceleration(Vector<Bille> billes) {
-	// TODO Auto-generated method stub
-    }
+		Vecteur souris = new Vecteur(point.getX(), point.getY());
+		
 
-    @Override
-    public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-	// TODO Auto-generated method stub
-	return this.getBille().gestionCollisionBilleBille(billes);
-    }
+		
+		Vecteur accelerationSouris = souris.difference(this.getBille().getPosition());
 
-    @Override
-    public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
-	    double hauteur) {
-	this.getBille().collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
-    }
+		// acceleration.multiplie(1 / 2);
+		// vitesse.multiplie((this.getBille().masse() / (48 * this.getBille().masse())));
+		// this.getBille().getVitesse().set(vitesse);
+		// this.getBille().getPosition().set(souris);
+		// this.getBille().deplacer(deltaT);
+		// this.getBille().getAcceleration().multiplie(deltaT);
+		
+		accelerationSouris.multiplie(1.0 / (this.getBille().masse() * 100.0));
+
+		this.getBille().getAcceleration().ajoute(accelerationSouris);
+		System.out.println(this.getBille().getAcceleration().toString());
+
+
+		// System.out.println(this.getBille().getAcceleration().toString());
+		// this.getBille().getAcceleration().add(vitesse);
+		this.getBille().deplacer(deltaT);
+	}
+
+	@Override
+	public void gestionAcceleration(Vector<Bille> billes) {
+		// TODO Auto-generated method stub
+	}
+
+	@Override
+	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
+		// TODO Auto-generated method stub
+		return this.getBille().gestionCollisionBilleBille(billes);
+	}
+
+	@Override
+	public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
+			double hauteur) {
+		this.getBille().collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
+	}
 }

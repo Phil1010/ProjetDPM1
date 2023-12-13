@@ -4,9 +4,25 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 import java.util.Vector;
 
 import vues.Billard;
+
+class Disco extends TimerTask {
+	private ComportementBilleDisco disco;
+	public Disco(ComportementBilleDisco disco) {
+		this.disco = disco;
+	}
+
+	@Override
+	public void run() {
+		this.disco.getBille().couleur = new Random().nextInt(16777216);
+		
+	}
+	
+}
 
 public class ComportementBilleDisco extends DecorateurBille {
 	private Billard billard;
@@ -14,22 +30,20 @@ public class ComportementBilleDisco extends DecorateurBille {
 	public ComportementBilleDisco(Bille bille, Billard billard) {
 		super(bille);
 		this.billard = billard;
+		new Timer().schedule(new Disco(this), 0, 1000);
+
 		// TODO Auto-generated constructor stub
 	}
 	
 	@Override
 	public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-		List<Color> couleurs = new ArrayList(){  };
-		couleurs.add(Color.BLACK);
-		couleurs.add(Color.BLUE);
-		couleurs.add(Color.CYAN);
-		couleurs.add(Color.DARK_GRAY);
-		
+	
 		
 		
 		
 		if (OutilsBille.gestionCollisionBilleBille(bille, billes)) {
-			this.getBille().couleur = couleurs.get(new Random().nextInt(couleurs.size())).getRGB();
+			// this.getBille().couleur = new Random().nextInt(16777216);
+			
 			System.out.println("aaa");
 		}
 		

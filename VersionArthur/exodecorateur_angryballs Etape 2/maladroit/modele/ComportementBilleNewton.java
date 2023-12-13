@@ -24,7 +24,7 @@ public class ComportementBilleNewton extends DecorateurBille
 	public void gestionAcceleration(Vector<Bille> billes) {
 		bille.gestionAcceleration(billes);
 		this.getAcceleration().ajoute(OutilsBille.gestionAccelerationNewton(this, billes));     // contribution de l'acc�l�ration due � l'attraction des autres billes
-		this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse()));      // contribution de l'acc�l�ration due au frottement dans l'air
+		// this.getAcceleration().ajoute(MecaniquePoint.freinageFrottement(this.masse(), this.getVitesse()));      // contribution de l'acc�l�ration due au frottement dans l'air
 	}
 
 }

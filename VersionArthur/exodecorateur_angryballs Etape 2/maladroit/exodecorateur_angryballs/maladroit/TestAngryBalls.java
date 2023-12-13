@@ -111,7 +111,7 @@ public class TestAngryBalls {
 		red = new ComportementBilleRebondir(red);
 		red = new ComportementBilleRectUniforme(red);
 		red = new ComportementBillePilotee(red, billard, rayonRouge);
-		red = new ComportementBilleCollision(red, collision[0], cadre);
+		red = new ComportementBilleCollision(red, collision[2], cadre);
 		red = new ComportementBilleDisco(red, billard);
 		billes.add(red);
 
@@ -122,7 +122,7 @@ public class TestAngryBalls {
 		yellow = new ComportementBillePesenteur(yellow, new Vecteur(0, 0.001));
 		yellow = new ComportementBilleFreinage(yellow);
 		yellow = new ComportementBillePilotee(yellow, billard, rayonRouge);
-		yellow = new ComportementBilleCollision(yellow, collision[0], cadre);
+		yellow = new ComportementBilleCollision(yellow, collision[2], cadre);
 
 		billes.add((Bille) yellow);
 
@@ -132,7 +132,7 @@ public class TestAngryBalls {
 		green = new ComportementBilleNewton(green);
 		green = new ComportementBilleFreinage(green);
 		green = new ComportementBillePilotee(green, billard, rayonRouge);
-		green = new ComportementBilleCollision(green, collision[0], cadre);
+		green = new ComportementBilleCollision(green, collision[2], cadre);
 
 		// billes.add((Bille) green);
 
@@ -141,7 +141,7 @@ public class TestAngryBalls {
 		cyan = new ComportementBilleRectUniforme(cyan);
 		cyan = new ComportementBilleTraverserMur(cyan);
 		cyan = new ComportementBillePilotee(cyan, billard, rayonRouge);
-		cyan = new ComportementBilleCollision(cyan, collision[0], cadre);
+		cyan = new ComportementBilleCollision(cyan, collision[2], cadre);
 
 		// billes.add((Bille) cyan);
 ////
@@ -153,7 +153,7 @@ public class TestAngryBalls {
 		noire = new ComportementBilleNewton(noire);
 		noire = new ComportementBilleArret(noire);
 		noire = new ComportementBillePilotee(noire, billard, rayonRouge);
-		noire = new ComportementBilleCollision(noire, collision[0], cadre);
+		noire = new ComportementBilleCollision(noire, collision[2], cadre);
 
 		// billes.add((Bille) noire);
 		cadre.addChoixHurlementListener(ref);
@@ -166,7 +166,7 @@ public class TestAngryBalls {
 		azur = new ComportementBilleRectUniforme(azur);
 		azur = new ComportementBilleFreinage(azur);
 		azur = new ComportementBillePilotee(azur, billard, rayonRouge);
-		azur = new ComportementBilleCollision(azur, collision[0], cadre);
+		azur = new ComportementBilleCollision(azur, collision[2], cadre);
 		azur = new ComportementBilleFlamme(azur, new Torche(azur), true, billard);
 
 		billes.add((Bille) azur);
