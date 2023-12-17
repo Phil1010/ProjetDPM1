@@ -7,13 +7,14 @@ import java.util.Vector;
 import mesmaths.geometrie.base.Vecteur;
 import modele.Bille;
 import vues.Billard;
+import vues.VueBillard;
 
 /**
  * Etat quand on clique sur une bille
  */
 public class EtatPiloteeCliquee extends EtatPilotee {
 
-	public EtatPiloteeCliquee(Billard billard, Bille bille) {
+	public EtatPiloteeCliquee(VueBillard billard, Bille bille) {
 		super(billard, bille);
 	}
 
@@ -22,30 +23,20 @@ public class EtatPiloteeCliquee extends EtatPilotee {
 	}
 
 	@Override
-	public void deplacer(double deltaT) {
-		Point point = this.getBillard().getMousePosition();
+	public void deplacer(double deltaT)
+	{
+		int x = this.getBillard().getPositionMouseX();
+		int y = this.getBillard().getPositionMouseX();
 
-		Vecteur souris = new Vecteur(point.getX(), point.getY());
-		
-
+		Vecteur souris = new Vecteur(x, y);
 		
 		Vecteur accelerationSouris = souris.difference(this.getBille().getPosition());
-
-		// acceleration.multiplie(1 / 2);
-		// vitesse.multiplie((this.getBille().masse() / (48 * this.getBille().masse())));
-		// this.getBille().getVitesse().set(vitesse);
-		// this.getBille().getPosition().set(souris);
-		// this.getBille().deplacer(deltaT);
-		// this.getBille().getAcceleration().multiplie(deltaT);
 		
 		accelerationSouris.multiplie(1.0 / (this.getBille().masse() * 100.0));
 
 		this.getBille().getAcceleration().ajoute(accelerationSouris);
 		System.out.println(this.getBille().getAcceleration().toString());
 
-
-		// System.out.println(this.getBille().getAcceleration().toString());
-		// this.getBille().getAcceleration().add(vitesse);
 		this.getBille().deplacer(deltaT);
 	}
 

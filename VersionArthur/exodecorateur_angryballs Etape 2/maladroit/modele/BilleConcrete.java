@@ -152,5 +152,10 @@ public class BilleConcrete extends Bille
     {
         return "centre = " + position + " rayon = "+rayon +  " vitesse = " + vitesse + " acceleration = " + acceleration + " couleur = " + couleur + "clef = " + clef;
     }
+
+	@Override
+	public void setRayon(double d) {
+		this.rayon = d;
+	}
 }
 

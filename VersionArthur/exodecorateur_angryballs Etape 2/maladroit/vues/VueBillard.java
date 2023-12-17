@@ -19,4 +19,8 @@ public interface VueBillard {
     public void miseAJour();
 
     public void montrer();
+    
+    public int getPositionMouseX();	// Retourne l'absisse du clique de la souris 
+    
+    public int getPositionMouseY(); // Retourne l'ordonnee du clique de la souris 
 }

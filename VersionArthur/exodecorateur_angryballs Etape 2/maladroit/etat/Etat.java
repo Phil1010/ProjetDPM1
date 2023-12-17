@@ -5,17 +5,18 @@ import java.util.Vector;
 
 import modele.Bille;
 import vues.Billard;
+import vues.VueBillard;
 
 public abstract class Etat {
-	private Billard billard;
+	private VueBillard billard;
 	private Bille bille;
 
-	public Etat(Billard billard, Bille bille) {
-		this.billard = billard;
+	public Etat(VueBillard billard2, Bille bille) {
+		this.billard = billard2;
 		this.bille = bille;
 	}
 
-	public Billard getBillard() {
+	public VueBillard getBillard() {
 		return billard;
 	}
 

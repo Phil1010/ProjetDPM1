@@ -57,6 +57,8 @@ public abstract class Bille {
      */
     public abstract int getColor();
     
+    public abstract void setRayon(double d);
+    
     
     public void setCouleur(int couleur) {
 		this.couleur = couleur;

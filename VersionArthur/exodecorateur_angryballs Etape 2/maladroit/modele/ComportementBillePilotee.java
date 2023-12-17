@@ -11,25 +11,28 @@ import etat.EtatPiloteeCliquee;
 import etat.EtatPiloteeRelachee;
 import mesmaths.geometrie.base.Vecteur;
 import vues.Billard;
+import vues.VueBillard;
+import visiteurPilotee.*;
 
 /**
  * Ce comportement s'applique quand on peut tenir une bille avec la souris
+ * ComportementBillePilotee utilise un VueBillard et non un Billard qui dépend d'AWT
  */
 public class ComportementBillePilotee extends DecorateurBille implements MouseListener {
-//    private ControllerEtat ct;
-
     private EtatPilotee etat;
-    private Billard billard;
+    private VueBillard billard;
 
-    public ComportementBillePilotee(Bille bille, Billard billard, double delta) {
-	super(bille);
-
-	this.billard = billard;
-	billard.addMouseListener(this);
-
-	this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
-	System.out.print("La bille est dans l'état : ");
-	etat.request();
+    public ComportementBillePilotee(Bille bille, VueBillard billard, double delta, VisiteurPilotee v)
+    {
+		super(bille);
+	
+		this.billard = billard;
+		
+		v.addMouseListener(this);		// Ne dépend plus de AWT
+	
+		this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
+		System.out.print("La bille est dans l'état : ");
+		etat.request();
     }
 
     @Override
@@ -38,41 +41,42 @@ public class ComportementBillePilotee extends DecorateurBille implements MouseLi
      * deplace la bille suivant ses comportement si on est dans l'état "Relaché"
      */
     public void deplacer(double deltaT) {
-	etat.deplacer(deltaT);
-//	System.out.println("Position Bille==== : " + bille.position);
-//	System.out.println("Vitesse Bille : " + bille.vitesse);
-//	System.out.println("Acceleration Bille : " + bille.acceleration);
+    	etat.deplacer(deltaT);
     }
 
     @Override
     public void gestionAcceleration(Vector<Bille> billes) {
-	etat.gestionAcceleration(billes);
+    	etat.gestionAcceleration(billes);
     }
 
     @Override
     public boolean gestionCollisionBilleBille(Vector<Bille> billes) {
-	return etat.gestionCollisionBilleBille(billes);
+    	return etat.gestionCollisionBilleBille(billes);
     }
 
     @Override
     public void collisionContour(double abscisseCoinHautGauche, double ordonneeCoinHautGauche, double largeur,
 	    double hauteur) {
-	etat.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
+    	etat.collisionContour(abscisseCoinHautGauche, ordonneeCoinHautGauche, largeur, hauteur);
     }
 
     @Override
     public void mouseReleased(MouseEvent e) {
-	this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
+    	this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
     }
 
     @Override
-    public void mousePressed(MouseEvent e) {
-	Point click = this.billard.getMousePosition();
-	Vecteur positionBille = this.bille.getPosition();
-
-	if (click.distance(positionBille.x, positionBille.y) <= this.bille.getRayon()) {
-	    this.etat = new EtatPiloteeCliquee(this.billard, this.bille);
-	}
+    public void mousePressed(MouseEvent e)
+    {
+		int x = this.billard.getPositionMouseX();
+		int y = this.billard.getPositionMouseY();
+		Vecteur positionBille = this.bille.getPosition();
+		
+		double dist = Math.sqrt((positionBille.x - x)*(positionBille.x - x) + (positionBille.y - y)*(positionBille.y - y));
+	
+		if (dist <= this.bille.getRayon()) {
+		    this.etat = new EtatPiloteeCliquee(this.billard, this.bille);
+		}
     }
 
     @Override
@@ -85,6 +89,6 @@ public class ComportementBillePilotee extends DecorateurBille implements MouseLi
 
     @Override
     public void mouseExited(MouseEvent e) {
-	this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
+    	this.etat = new EtatPiloteeRelachee(this.billard, this.bille);
     }
 }

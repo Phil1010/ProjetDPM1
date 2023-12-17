@@ -67,4 +67,7 @@ public abstract class DecorateurBille extends Bille
 
     @Override
     public int getColor() { return bille.getColor(); }
+    
+    @Override
+    public void setRayon(double rayon) { bille.setRayon(rayon); }
 }

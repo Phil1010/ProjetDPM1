@@ -8,6 +8,7 @@ import mesmaths.geometrie.base.Vecteur;
 import modele.*;
 import modele.torche.Torche;
 import musique.SonLong;
+import visiteurPilotee.VisiteurPiloteeAWT;
 import vues.Billard;
 import vues.BillardAR;
 import vues.CadreAngryBalls;
@@ -105,14 +106,17 @@ public class TestAngryBalls {
 
 		Vecteur p = Vecteur.créationAléatoire(0, 0, xMax, yMax);
 		Vecteur v = Vecteur.créationAléatoire(-vMax, -vMax, vMax, vMax);
+		
+		VisiteurPiloteeAWT visiteur = new VisiteurPiloteeAWT(billard);
 
 // Bille rouge MRU avec rebond
 		Bille red = new BilleConcrete(p1, rayonRouge, v1, Color.red.getRGB());
 		red = new ComportementBilleRebondir(red);
 		red = new ComportementBilleRectUniforme(red);
-		red = new ComportementBillePilotee(red, billard, rayonRouge);
+		red = new ComportementBillePilotee(red, billard, rayonRouge, visiteur);
 		red = new ComportementBilleCollision(red, collision[2], cadre);
 		red = new ComportementBilleDisco(red, billard);
+		red = new ComportementBilleGrossit(red, 0.01);
 		billes.add(red);
 
 // Bille jaune Newton avec pesanteur, frottements et rebond
@@ -121,7 +125,7 @@ public class TestAngryBalls {
 		yellow = new ComportementBilleNewton(yellow);
 		yellow = new ComportementBillePesenteur(yellow, new Vecteur(0, 0.001));
 		yellow = new ComportementBilleFreinage(yellow);
-		yellow = new ComportementBillePilotee(yellow, billard, rayonRouge);
+		yellow = new ComportementBillePilotee(yellow, billard, rayonRouge, visiteur);
 		yellow = new ComportementBilleCollision(yellow, collision[2], cadre);
 
 		billes.add((Bille) yellow);
@@ -131,7 +135,7 @@ public class TestAngryBalls {
 		green = new ComportementBilleRebondir(green);
 		green = new ComportementBilleNewton(green);
 		green = new ComportementBilleFreinage(green);
-		green = new ComportementBillePilotee(green, billard, rayonRouge);
+		green = new ComportementBillePilotee(green, billard, rayonRouge, visiteur);
 		green = new ComportementBilleCollision(green, collision[2], cadre);
 
 		// billes.add((Bille) green);
@@ -140,7 +144,7 @@ public class TestAngryBalls {
 		Bille cyan = new BilleConcrete(p4, rayonCyan, v4, Color.cyan.getRGB());
 		cyan = new ComportementBilleRectUniforme(cyan);
 		cyan = new ComportementBilleTraverserMur(cyan);
-		cyan = new ComportementBillePilotee(cyan, billard, rayonRouge);
+		cyan = new ComportementBillePilotee(cyan, billard, rayonRouge, visiteur);
 		cyan = new ComportementBilleCollision(cyan, collision[2], cadre);
 
 		// billes.add((Bille) cyan);
@@ -152,7 +156,7 @@ public class TestAngryBalls {
 		ComportementBilleHurlante ref = (ComportementBilleHurlante) noire;
 		noire = new ComportementBilleNewton(noire);
 		noire = new ComportementBilleArret(noire);
-		noire = new ComportementBillePilotee(noire, billard, rayonRouge);
+		noire = new ComportementBillePilotee(noire, billard, rayonRouge, visiteur);
 		noire = new ComportementBilleCollision(noire, collision[2], cadre);
 
 		// billes.add((Bille) noire);
@@ -165,7 +169,7 @@ public class TestAngryBalls {
 		azur = new ComportementBilleRebondir(azur);
 		azur = new ComportementBilleRectUniforme(azur);
 		azur = new ComportementBilleFreinage(azur);
-		azur = new ComportementBillePilotee(azur, billard, rayonRouge);
+		azur = new ComportementBillePilotee(azur, billard, rayonRouge, visiteur);
 		azur = new ComportementBilleCollision(azur, collision[2], cadre);
 		azur = new ComportementBilleFlamme(azur, new Torche(azur), true, billard);
 

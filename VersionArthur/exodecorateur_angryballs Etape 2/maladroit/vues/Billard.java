@@ -26,6 +26,7 @@ import exodecorateur_angryballs.mieux.modele.awt.DessinateurBilleAWT;*/
 public class Billard extends Canvas implements VueBillard
 {
     public Vector<Bille> billes;
+    
     public Billard(Vector<Bille> billes)
     {
         this.billes = billes;
@@ -64,5 +65,15 @@ public class Billard extends Canvas implements VueBillard
     }
 
     public void setImage() {}
+
+	@Override
+	public int getPositionMouseX() {
+		return this.getMousePosition().x;
+	}
+
+	@Override
+	public int getPositionMouseY() {
+		return this.getMousePosition().y;
+	}
 
 }
